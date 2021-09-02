@@ -12,6 +12,12 @@
     <title>Add Student</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .errors
+        {
+            color: #ef6969;
+        }
+    </style>
 </head>
 <body>
 <h2 style="text-align: center">Add Student Here</h2>
@@ -24,10 +30,12 @@
                         <form:hidden path="id"/>
                         <form:input path="name" id="name" class="validate"/>
                         <form:label for="name" path="name">Name</form:label>
+                        <form:errors path="name" cssClass="errors"/>
                     </div>
                     <div class="input-field col s12">
                         <form:input path="phone" id="phone" class="validate"/>
                         <form:label path="phone" for="phone">Phone</form:label>
+                        <form:errors path="phone" cssClass="errors"/>
                     </div>
                     <div class="input-field col s12">
                         <form:input path="location" id="loc" class="validate"/>

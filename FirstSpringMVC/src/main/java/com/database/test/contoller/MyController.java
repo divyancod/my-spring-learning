@@ -1,12 +1,15 @@
 package com.database.test.contoller;
 
 import com.database.test.Service.StudentService;
+import com.database.test.exception.StudentNotFound;
 import com.database.test.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -30,13 +33,18 @@ public class MyController {
         return "add-student";
     }
     @GetMapping("/process-data")
-    public String processStudent(@ModelAttribute("studentModel")Student student)
+    public String processStudent(@Valid @ModelAttribute("studentModel")Student student, BindingResult result)
     {
+        System.out.println(result.getAllErrors());
+        if(result.hasErrors())
+        {
+            return "add-student";
+        }
         studentService.addStudent(student);
         return "redirect:/";
     }
     @PostMapping("/update-data")
-    public String updateStudent(@RequestParam("id")String id,Model model)
+    public String updateStudent(@RequestParam("id")String id,Model model) throws StudentNotFound
     {
         Student student = studentService.fetchStudent(id);
         model.addAttribute("studentModel",student);
@@ -49,7 +57,7 @@ public class MyController {
         return "redirect:/";
     }
     @RequestMapping("/show-student")
-    public String showDetails(@RequestParam("id")String id,Model model)
+    public String showDetails(@RequestParam("id")String id,Model model) throws StudentNotFound
     {
         Student student = studentService.fetchStudent(id);
         model.addAttribute("student",student);

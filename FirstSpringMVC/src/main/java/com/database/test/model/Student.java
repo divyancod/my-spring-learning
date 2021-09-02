@@ -1,8 +1,14 @@
 package com.database.test.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 public class Student {
     private int id;
+    @NotBlank(message = "* Student Name can't be empty")
     private String name;
+    @Pattern(regexp = "^[0-9]{10}$", message = "* Enter 10 digit Phone Number")
+    @NotBlank(message = "* Student Phone can't be empty")
     private String phone;
     private String location;
 
