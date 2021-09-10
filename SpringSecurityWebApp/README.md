@@ -1,4 +1,4 @@
-# Simple Web App on Spring MVC with Spring Security
+# Simple Web App on Spring MVC with Spring Security (Ongoing)
 Project made a simple structure to understand working of Spring Security.
 For understanding about spring security and how to secure routes also about roles and authorities in spring security.
 
