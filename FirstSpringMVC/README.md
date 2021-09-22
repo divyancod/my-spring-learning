@@ -19,3 +19,7 @@ MySQL Database
 - Addition of student data
 - Deletion of student data
 - Updation os student data
+
+#
+<img src="first-1.png" alt="appscreenshot1" height="600"/>
+<img src="first-2.png" alt="appscreenshot2" height="600"/>
