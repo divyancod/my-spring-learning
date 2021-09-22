@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Todo App</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        ul li{
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+<h4 class="center-align">Simple Todo App</h4>
+<div class="container">
+    <div class="center-align">
+        <a href="/add-todo" class="waves-effect waves-light btn teal">Add Todo</a>
+    </div>
+    <ul th:each="todo : ${todos}">
+        <li>
+            <div class="row">
+                <div class="col s9"><p th:text="${todo.todo}"></p></div>
+                <div class="col s3">
+                    <ul style="list-style-type: none; display: flex">
+                        <li>
+                            <form method="get" th:action="@{'/toggle/{id}'(id=${todo.ID})}">
+                                <button class="btn waves-effect waves-light"
+                                        th:classappend="${todo.completed=='0'?'green':'orange'}"
+                                        type="submit" th:text="${todo.completed}=='0'? 'Complete':'Undo'"
+                                        style="text-transform: none"></button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="get" th:action="@{'/update-todo/{id}'(id=${todo.ID})}">
+                                <button class="btn waves-effect waves-light deep-purple"
+                                        type="submit"
+                                        style="text-transform: none">Update
+                                </button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="get" th:action="@{'/delete/{id}'(id=${todo.ID})}">
+                                <button class="btn waves-effect waves-light red"
+                                        type="submit"
+                                        style="text-transform: none">Delete
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- JavaScript Bundle with Popper -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"
+></script>
+</body>
+</html>
