@@ -22,7 +22,7 @@
     <div class="row">
         <div class="row center">
             <div class="col s6">
-                <a href="add-employee" class="waves-effect waves-light btn" style="text-transform: none">Add Students</a>
+                <a href="add-employee" class="waves-effect waves-light btn" style="text-transform: none">Add Employees</a>
             </div>
             <div class="col s6">
                 <form:form method="post" action="/logout">

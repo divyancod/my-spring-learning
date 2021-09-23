@@ -20,3 +20,19 @@ MySQL Database
 - Addition of employee data
 - Deletion of employee data
 - Updation os employee data
+#
+    <p align="center">
+      <img src="screenshots/ss-1.png" width="45%" />
+      <img src="screenshots/ss-2.png" width="45%" />
+    </p>
+    <p align="center">
+      <img src="screenshots/ss-3.png" width="45%" />
+      <img src="screenshots/ss-4.png" width="45%" />
+    </p>
+    <p align="center">
+      <img src="screenshots/ss-5.png" width="45%" />
+      <img src="screenshots/ss-6.png" width="45%" />
+    </p>
+    <p align="center">
+      <img src="screenshots/ss-7.png" width="45%" />
+    </p>

@@ -1,5 +1,6 @@
 package com.secure.empmanage.Services;
 
+import com.secure.empmanage.Configurations.EmployeeAlreadyExists;
 import com.secure.empmanage.Configurations.EmployeeNotFound;
 import com.secure.empmanage.Dao.EmployeeDao;
 import com.secure.empmanage.Models.Employee;
@@ -21,7 +22,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void addEmployee(Employee employee) {
+    public void addEmployee(Employee employee) throws EmployeeAlreadyExists{
+        if(employee.getId()==0 && employeeDao.userCheck(employee.getEmail()))
+        {
+            throw new EmployeeAlreadyExists("Employee Already Exists");
+        }
         if (employee.getId() == 0)
             employeeDao.addEmployeeToDB(employee);
         else
@@ -38,6 +43,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteEmployee(String id) {
         employeeDao.deleteEmployeeDetails(id);
+    }
+
+    @Override
+    public void toggleEmployeeState(String userid) {
+        employeeDao.toggleStateDb(userid);
     }
 
 }

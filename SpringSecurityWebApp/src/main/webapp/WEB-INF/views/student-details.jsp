@@ -14,14 +14,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<h2 style="text-align: center">Student Info</h2>
+<h2 style="text-align: center">Employee Info</h2>
 <div class="container">
     <div class="row">
         <h5>Personal Details : </h5>
         <table>
             <tbody>
             <tr>
-                <td>Student Unique ID :</td>
+                <td>Employee Unique ID :</td>
                 <td>${employee.getId()}</td>
             </tr>
             <tr>
@@ -64,13 +64,26 @@
             </tbody>
         </table>
         <div style="margin: 10px;" class="center-align">
-            <form action="user-profile" method="get">
-                <button name="id" value="${employee.id}" class="btn waves-effect waves-light"
-                        type="submit"
-                        style="text-transform: none">
-                    View
-                </button>
-            </form>
+           <div class="row">
+               <div class="col s6">
+                   <form action="user-profile" method="get">
+                       <button name="id" value="${employee.id}" class="btn waves-effect waves-light"
+                               type="submit"
+                               style="text-transform: none">
+                           Update Deatils
+                       </button>
+                   </form>
+               </div>
+               <div class="col s6">
+                   <form action="toggle-user-login" method="get">
+                       <button name="id" value="${employee.id}" class="btn waves-effect waves-light"
+                               type="submit"
+                               style="text-transform: none">
+                           Toggle Login Access
+                       </button>
+                   </form>
+               </div>
+           </div>
         </div>
     </div>
 </div>

@@ -11,4 +11,6 @@ public interface EmployeeDao {
     Employee getEmployee(String id) throws EmployeeNotFound;
     void updateEmployeeDetail(Employee employee);
     void deleteEmployeeDetails(String id);
+    boolean userCheck(String email);
+    void toggleStateDb(String id);
 }

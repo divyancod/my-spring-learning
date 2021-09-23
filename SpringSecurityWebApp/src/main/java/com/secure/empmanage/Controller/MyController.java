@@ -1,5 +1,6 @@
 package com.secure.empmanage.Controller;
 
+import com.secure.empmanage.Configurations.EmployeeAlreadyExists;
 import com.secure.empmanage.Configurations.EmployeeNotFound;
 import com.secure.empmanage.Models.Employee;
 import com.secure.empmanage.Services.EmployeeService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,8 +38,7 @@ public class MyController {
     }
 
     @PostMapping("/process-data")
-    public String processStudent(@Valid @ModelAttribute("employeeModel") Employee employee, BindingResult result) {
-        System.out.println(result.getAllErrors());
+    public String processStudent(@Valid @ModelAttribute("employeeModel") Employee employee, BindingResult result) throws EmployeeAlreadyExists {
         if (result.hasErrors()) {
             return "add-student";
         }
@@ -69,24 +70,27 @@ public class MyController {
     }
 
     @RequestMapping("/show-employee")
-    public String showDetails(@RequestParam("id")String id,Model model) throws EmployeeNotFound
-    {
+    public String showDetails(@RequestParam("id") String id, Model model) throws EmployeeNotFound {
         Employee employees = employeeService.fetchEmployee(id);
         model.addAttribute("employee", employees);
         return "student-details";
     }
 
     @RequestMapping("/user-profile")
-    public String updateUser(@RequestParam("id")String id,Model model) throws EmployeeNotFound
-    {
+    public String updateUser(@RequestParam("id") String id, Model model) throws EmployeeNotFound {
         Employee employee = employeeService.fetchEmployee(id);
         model.addAttribute("employee", employee);
         return "update-profile";
     }
 
     @PostMapping("/update-user-profile")
-    public String updateUserProfile(@ModelAttribute("employee") Employee employee)
-    {
+    public String updateUserProfile(@ModelAttribute("employee") Employee employee) {
+        return "redirect:/";
+    }
+
+    @RequestMapping("/toggle-user-login")
+    public String toggleUserState(@RequestParam("id") String id) {
+        employeeService.toggleEmployeeState(id);
         return "redirect:/";
     }
 }

@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
-<h2 style="text-align: center">Add Student Here</h2>
+<h2 style="text-align: center">Add Employee Here</h2>
 <p style="text-align: center">You need to provide user login individually.</p>
 <div class="container">
     <div class="row">
@@ -41,7 +41,11 @@
                     </div>
                     <div class="input-field col s12">
                         <form:input path="position" id="loc" class="validate"/>
-                        <form:label path="position" for="loc">Current Learning</form:label>
+                        <form:label path="position" for="loc">Positon</form:label>
+                    </div>
+                    <div class="input-field col s12">
+                        <form:input path="clearning" id="loc" class="validate"/>
+                        <form:label path="clearning" for="loc">Salary Offered</form:label>
                     </div>
                     <div id="div" class="row center">
                         <button class="btn waves-effect waves-light" type="submit" style="text-transform: none">Submit

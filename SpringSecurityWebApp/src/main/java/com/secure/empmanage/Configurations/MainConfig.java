@@ -52,4 +52,5 @@ public class MainConfig implements WebMvcConfigurer {
     {
         return new JdbcTemplate(dataSource());
     }
+
 }
